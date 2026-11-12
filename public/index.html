@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Chor Chitti | Online Game</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<!-- Animated Background -->
+<div class="background-animation"></div>
+
+<main class="game-container">
+
+    <!-- Game Header -->
+    <header class="game-header">
+
+        <div class="logo">♛</div>
+
+        <h1>CHOR <span>CHITTI</span></h1>
+
+        <p class="subtitle">THE ULTIMATE MYSTERY GAME</p>
+
+        <p class="creator">CREATED BY ABIN</p>
+
+        <!-- Sound Control -->
+        <button id="soundToggleBtn" class="secondary-btn">
+            🔊 SOUND ON
+        </button>
+
+    </header>
+
+    <!-- Welcome Section -->
+    <section class="welcome-section">
+
+        <h2>Trust No One.</h2>
+
+        <p>
+            Four players. Four secret identities. One mystery.
+        </p>
+
+    </section>
+
+    <!-- Main Menu -->
+    <section class="menu-card">
+
+        <label for="playerName">ENTER YOUR PLAYER NAME</label>
+
+        <input
+            type="text"
+            id="playerName"
+            placeholder="Enter your name..."
+            maxlength="16"
+            autocomplete="off"
+        >
+
+        <div class="button-group">
+
+            <button id="createRoomBtn" class="main-btn">
+                CREATE ROOM
+            </button>
+
+            <button id="showJoinBtn" class="secondary-btn">
+                JOIN ROOM
+            </button>
+
+        </div>
+
+        <!-- Join Room Section -->
+        <div id="joinSection" class="join-section hidden">
+
+            <input
+                type="text"
+                id="roomCode"
+                placeholder="Enter room code"
+                maxlength="6"
+                autocomplete="off"
+            >
+
+            <button id="joinRoomBtn" class="main-btn">
+                ENTER ROOM
+            </button>
+
+        </div>
+
+        <p id="statusMessage" class="status-message"></p>
+
+    </section>
+
+    <!-- Game Lobby -->
+    <section id="lobbySection" class="menu-card hidden">
+
+        <h2>GAME LOBBY</h2>
+
+        <p>ROOM CODE</p>
+
+        <h1 id="displayRoomCode">------</h1>
+
+        <p>Share this code with your friends.</p>
+
+        <h3>PLAYERS</h3>
+
+        <div id="playerList"></div>
+
+        <p id="lobbyMessage"></p>
+
+        <button id="startGameBtn" class="main-btn hidden">
+            START GAME
+        </button>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+
+        <p>RAJA 👑 | MANTRI | POLICE 🚔 | CHOR 🥷</p>
+
+        <p class="footer-text">
+            A GAME OF SECRETS AND SUSPENSE
+        </p>
+
+    </footer>
+
+</main>
+
+<!-- Socket.IO -->
+<script src="/socket.io/socket.io.js"></script>
+
+<!-- Game JavaScript -->
+<script src="app.js"></script>
+
+</body>
+
+</html>
