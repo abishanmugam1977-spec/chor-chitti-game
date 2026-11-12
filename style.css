@@ -1,0 +1,869 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --gold: #f5c76b;
+    --gold-light: #ffe4a3;
+    --purple: #9b5cff;
+    --purple-light: #c49aff;
+    --background: #080811;
+    --card: #151526;
+    --text-muted: #aaa9bb;
+    --border: #ffffff18;
+    --success: #35df9a;
+    --danger: #ff526b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--background);
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+    padding: 30px 15px;
+}
+
+/* BACKGROUND */
+
+.background-animation {
+    position: fixed;
+    inset: -50%;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 20% 30%, #54218b55, transparent 30%),
+        radial-gradient(circle at 80% 70%, #a8752d33, transparent 30%),
+        radial-gradient(circle at 50% 50%, #171735, #080811 65%);
+    animation: backgroundMove 15s ease-in-out infinite alternate;
+}
+
+@keyframes backgroundMove {
+    from {
+        transform: translate(-3%, -2%) scale(1);
+    }
+    to {
+        transform: translate(3%, 2%) scale(1.12);
+    }
+}
+
+/* MAIN CONTAINER */
+
+.game-container {
+    width: 100%;
+    max-width: 700px;
+    text-align: center;
+    animation: appear 0.8s ease;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* LOGO */
+
+.logo {
+    font-size: 65px;
+    color: var(--gold);
+    text-shadow: 0 0 25px #f5c76b88;
+    animation: royalGlow 3s infinite alternate;
+}
+
+@keyframes royalGlow {
+    from {
+        text-shadow: 0 0 10px #f5c76b55;
+    }
+    to {
+        text-shadow: 0 0 35px #f5c76bcc;
+    }
+}
+
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(32px, 8vw, 58px);
+    font-weight: 900;
+    letter-spacing: 5px;
+    margin-top: 5px;
+}
+
+h1 span {
+    color: var(--gold);
+}
+
+h2, h3 {
+    font-family: 'Orbitron', sans-serif;
+}
+
+.subtitle {
+    color: var(--text-muted);
+    font-size: 11px;
+    letter-spacing: 5px;
+    margin-top: 12px;
+}
+
+/* WELCOME */
+
+.welcome-section {
+    margin: 50px 0 35px;
+}
+
+.welcome-section h2 {
+    font-size: 27px;
+    color: var(--gold);
+    margin-bottom: 10px;
+}
+
+.welcome-section p {
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+/* GLASS CARDS */
+
+.menu-card,
+#playerList,
+#gameScreen,
+#resultScreen,
+#lobbyScreen {
+    background: linear-gradient(145deg, #1b1b30ed, #10101ddd);
+    border: 1px solid #a77b4c55;
+    border-radius: 22px;
+    padding: 30px;
+    box-shadow:
+        0 15px 50px #00000055,
+        0 0 35px #8c55d522,
+        inset 0 0 30px #ffffff05;
+    backdrop-filter: blur(18px);
+    animation: cardAppear 0.5s ease;
+}
+
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.menu-card label {
+    display: block;
+    color: var(--gold);
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+/* INPUTS */
+
+input {
+    width: 100%;
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid #ffffff25;
+    background: #090912;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    outline: none;
+    transition: 0.3s;
+}
+
+input:focus {
+    border-color: var(--purple);
+    box-shadow: 0 0 18px #9b5cff55;
+}
+
+input::placeholder {
+    color: #77758b;
+}
+
+/* BUTTONS */
+
+button {
+    padding: 15px 18px;
+    border-radius: 11px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+.main-btn {
+    border: none;
+    color: #17111f;
+    background: linear-gradient(110deg, var(--gold-light), #e8a43d);
+    box-shadow: 0 0 20px #f5c76b33;
+}
+
+.main-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 30px #f5c76b88;
+}
+
+.secondary-btn {
+    color: var(--gold);
+    background: #f5c76b08;
+    border: 1px solid var(--gold);
+}
+
+.secondary-btn:hover {
+    background: #f5c76b20;
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px #f5c76b33;
+}
+
+button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* BUTTON GROUP */
+
+.button-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+/* JOIN SECTION */
+
+.join-section {
+    margin-top: 20px;
+    display: grid;
+    gap: 15px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.status-message,
+#lobbyMessage {
+    margin-top: 18px;
+    font-size: 13px;
+    color: var(--gold);
+    min-height: 20px;
+}
+
+/* PLAYER LIST */
+
+#playerList {
+    margin-top: 20px;
+    padding: 20px;
+    text-align: left;
+}
+
+#playerList > * {
+    margin-bottom: 10px;
+}
+
+#playerList > *:last-child {
+    margin-bottom: 0;
+}
+
+/* GAME SCREEN */
+
+#gameScreen,
+#resultScreen {
+    margin-top: 25px;
+}
+
+#gameScreen h2,
+#resultScreen h2 {
+    color: var(--gold);
+    margin-bottom: 18px;
+}
+
+#gameScreen p,
+#resultScreen p {
+    color: #ddd9ec;
+    line-height: 1.8;
+}
+
+/* TIMER */
+
+#timer {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 42px;
+    font-weight: 800;
+    color: var(--gold);
+    text-shadow: 0 0 20px #f5c76b77;
+    margin: 20px 0;
+}
+
+/* PLAYER CARDS */
+
+.player-card {
+    background: linear-gradient(120deg, #25243c, #171729);
+    border: 1px solid #ffffff18;
+    border-radius: 14px;
+    padding: 16px;
+    margin: 10px 0;
+    transition: 0.3s ease;
+}
+
+.player-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-3px);
+    box-shadow: 0 0 18px #f5c76b22;
+}
+
+/* LEADERBOARD */
+
+.leaderboard {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.leaderboard > * {
+    padding: 14px;
+    margin: 8px 0;
+    background: #ffffff09;
+    border: 1px solid #ffffff12;
+    border-radius: 12px;
+}
+
+/* ROLE DISPLAY */
+
+.role {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(25px, 6vw, 40px);
+    font-weight: 900;
+    color: var(--gold);
+    text-shadow: 0 0 25px #f5c76b88;
+    margin: 20px 0;
+    animation: roleReveal 0.7s ease;
+}
+
+@keyframes roleReveal {
+    from {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* GAME OVER */
+
+#resultScreen {
+    border-color: #f5c76b77;
+    box-shadow: 0 0 40px #f5c76b22;
+}
+
+#resultScreen h1 {
+    color: var(--gold);
+    text-shadow: 0 0 25px #f5c76b88;
+}
+
+/* FOOTER */
+
+footer {
+    margin-top: 35px;
+    color: #c6b8e5;
+    font-size: 13px;
+    letter-spacing: 2px;
+}
+
+.footer-text {
+    color: #77758b;
+    font-size: 10px;
+    margin-top: 12px;
+    letter-spacing: 3px;
+}
+
+/* HOVER EFFECTS */
+
+.menu-card,
+#playerList,
+#gameScreen,
+#resultScreen {
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-card:hover {
+    border-color: #f5c76b88;
+}
+
+/* MOBILE */
+
+@media (max-width: 500px) {
+    body {
+        padding: 20px 12px;
+    }
+
+    .game-container {
+        max-width: 100%;
+    }
+
+    .logo {
+        font-size: 50px;
+    }
+
+    h1 {
+        letter-spacing: 3px;
+    }
+
+    .subtitle {
+        letter-spacing: 3px;
+        font-size: 9px;
+    }
+
+    .menu-card,
+    #playerList,
+    #gameScreen,
+    #resultScreen,
+    #lobbyScreen {
+        padding: 22px 16px;
+        border-radius: 17px;
+    }
+
+    .button-group {
+        grid-template-columns: 1fr;
+    }
+
+    button {
+        width: 100%;
+        padding: 15px 10px;
+    }
+
+    .welcome-section {
+        margin: 35px 0 25px;
+    }
+
+    footer {
+        font-size: 10px;
+    }
+}
+
+/* ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+/* =================================
+   CHOR CHITTI - PREMIUM GAME UI
+================================= */
+
+/* PLAYER CARDS */
+
+.lobby-player,
+.player-card {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    text-align: left;
+    padding: 18px;
+    margin: 12px 0;
+    background: linear-gradient(120deg, #24243d, #141426);
+    border: 1px solid #ffffff20;
+    border-radius: 15px;
+    transition: 0.3s ease;
+}
+
+.lobby-player:hover,
+.player-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--gold);
+    box-shadow: 0 8px 25px #f5c76b22;
+}
+
+/* AVATARS */
+
+.player-avatar {
+    width: 58px;
+    height: 58px;
+    min-width: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    background: linear-gradient(145deg, #39345c, #171729);
+    border: 1px solid #a77b4c88;
+    border-radius: 50%;
+    box-shadow: 0 0 18px #9b5cff33;
+}
+
+.player-info {
+    flex: 1;
+}
+
+.player-info h3,
+.lobby-player h3 {
+    color: var(--gold);
+    font-size: 15px;
+}
+
+.player-info p,
+.lobby-player p {
+    color: #aaa9bb;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+/* ROLE REVEAL */
+
+.role-reveal {
+    animation: revealEntrance 0.8s ease;
+}
+
+@keyframes revealEntrance {
+    from {
+        opacity: 0;
+        transform: scale(0.90) translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.reveal-icon {
+    font-size: 55px;
+    margin-bottom: 15px;
+    animation: floatIcon 2s infinite ease-in-out;
+}
+
+@keyframes floatIcon {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.reveal-subtitle {
+    color: var(--purple-light);
+    font-size: 12px;
+    letter-spacing: 4px;
+    margin: 20px 0;
+}
+
+.secret-role-card {
+    padding: 35px 20px;
+    margin: 20px auto;
+    max-width: 400px;
+    background: #ffffff08;
+    border: 2px solid var(--gold);
+    border-radius: 22px;
+    animation: roleGlow 2s infinite alternate;
+}
+
+@keyframes roleGlow {
+    from {
+        box-shadow: 0 0 10px #f5c76b22;
+    }
+
+    to {
+        box-shadow: 0 0 35px #f5c76b66;
+    }
+}
+
+.secret-role-icon {
+    font-size: 65px;
+    margin-bottom: 10px;
+}
+
+.secret-role {
+    font-size: 35px;
+    letter-spacing: 5px;
+}
+
+.secret-warning {
+    color: var(--gold-light);
+    font-size: 13px;
+    margin: 15px 0 25px;
+}
+
+/* ROLE COLOURS */
+
+.role-raja {
+    border-color: #f5c76b !important;
+}
+
+.role-mantri {
+    border-color: #9b5cff !important;
+}
+
+.role-police {
+    border-color: #43a5ff !important;
+}
+
+.role-chor {
+    border-color: #ff526b !important;
+}
+
+.role-raja .secret-role,
+.role-raja h2 {
+    color: var(--gold);
+}
+
+.role-mantri .secret-role,
+.role-mantri h2 {
+    color: var(--purple-light);
+}
+
+.role-police .secret-role,
+.role-police h2 {
+    color: #43a5ff;
+}
+
+.role-chor .secret-role,
+.role-chor h2 {
+    color: #ff526b;
+}
+
+/* TIMER CARD */
+
+.timer-card {
+    max-width: 300px;
+    margin: 25px auto;
+    padding: 22px;
+    border-radius: 18px;
+    border: 1px solid var(--gold);
+    background: #f5c76b0b;
+    box-shadow: 0 0 25px #f5c76b22;
+}
+
+.timer-card h1 {
+    font-size: 55px;
+    color: var(--gold);
+    margin: 10px 0;
+}
+
+.timer-card p {
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--text-muted);
+}
+
+.timer-danger {
+    border-color: var(--danger);
+    animation: dangerPulse 0.8s infinite alternate;
+}
+
+.timer-danger h1 {
+    color: var(--danger);
+}
+
+@keyframes dangerPulse {
+    from {
+        box-shadow: 0 0 10px #ff526b33;
+    }
+
+    to {
+        box-shadow: 0 0 30px #ff526b88;
+    }
+}
+
+/* POLICE MISSION */
+
+.mission-card {
+    margin-top: 25px;
+    padding: 22px;
+    background: #ffffff08;
+    border: 1px solid #9b5cff66;
+    border-radius: 16px;
+}
+
+.mission-card h2 {
+    color: var(--purple-light);
+    margin-bottom: 12px;
+}
+
+.police-player-btn {
+    display: block;
+    width: 100%;
+    margin-top: 12px;
+}
+
+/* ROUND RESULT */
+
+.result-screen {
+    animation: revealEntrance 0.7s ease;
+}
+
+.result-icon {
+    font-size: 55px;
+    margin-bottom: 15px;
+}
+
+.result-message {
+    margin: 20px 0;
+    color: var(--gold);
+}
+
+.result-details {
+    background: #ffffff08;
+    padding: 18px;
+    border-radius: 14px;
+    margin: 20px 0;
+}
+
+/* FINAL PLAYER CARDS */
+
+.final-players {
+    margin: 20px 0;
+}
+
+.final-player-card {
+    animation: revealEntrance 0.5s ease;
+}
+
+/* LEADERBOARD */
+
+.leaderboard-item {
+    padding: 18px;
+    margin: 12px 0;
+    background: linear-gradient(120deg, #26243e, #151525);
+    border: 1px solid #ffffff20;
+    border-radius: 14px;
+    transition: 0.3s ease;
+}
+
+.leaderboard-item:hover {
+    transform: translateX(5px);
+    border-color: var(--gold);
+}
+
+.leaderboard-item h3 {
+    color: var(--gold-light);
+    font-size: 15px;
+}
+
+.leaderboard-item h2 {
+    font-size: 18px;
+    margin-top: 8px;
+}
+
+/* CHAMPION CARD */
+
+.champion-card {
+    margin: 30px auto;
+    padding: 35px 20px;
+    max-width: 450px;
+    border: 2px solid var(--gold);
+    border-radius: 22px;
+    background: linear-gradient(145deg, #3b2b12, #171729);
+    box-shadow: 0 0 40px #f5c76b44;
+    animation: championReveal 1s ease;
+}
+
+@keyframes championReveal {
+    from {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.champion-crown {
+    font-size: 65px;
+    animation: floatIcon 2s infinite ease-in-out;
+}
+
+.champion-card p {
+    color: var(--gold-light);
+    letter-spacing: 4px;
+    margin: 15px 0;
+}
+
+.champion-card h1 {
+    color: var(--gold);
+    font-size: clamp(25px, 6vw, 42px);
+    overflow-wrap: anywhere;
+}
+
+.thank-you {
+    color: var(--gold);
+    margin-top: 35px;
+}
+
+/* PLAY AGAIN AREA */
+
+.play-again-area {
+    display: grid;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+/* MOBILE */
+
+@media (max-width: 500px) {
+
+    .lobby-player,
+    .player-card {
+        gap: 12px;
+        padding: 14px;
+    }
+
+    .player-avatar {
+        width: 48px;
+        height: 48px;
+        min-width: 48px;
+        font-size: 25px;
+    }
+
+    .secret-role-card {
+        padding: 25px 15px;
+    }
+
+    .secret-role {
+        font-size: 27px;
+    }
+
+    .timer-card h1 {
+        font-size: 45px;
+    }
+
+    .champion-card {
+        padding: 25px 12px;
+    }
+
+    .leaderboard-item h2 {
+        font-size: 15px;
+    }
+}
